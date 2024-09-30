@@ -1,20 +1,18 @@
 import { styled } from "styled-components";
-import font from '../../assets/fonts/Noyh.ttf'
-
+import font from "../../assets/fonts/Noyh.ttf";
 
 export const Header = styled.header`
-//
-z-index: 200;
-  position: absolute;
-  left: 0;
-  right: 0;
-//
+    //
+    z-index: 200;
+    position: absolute;
+    left: 0;
+    right: 0;
+    //
     @font-face {
         font-family: NoyhRW01-Medium;
-        src: url('${font}') format('truetype');
+        src: url("${font}") format("truetype");
     }
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
     display: flex;
     flex-direction: row;
@@ -26,7 +24,7 @@ z-index: 200;
     padding-top: 10px;
 
     .title {
-        color: #FFF;
+        color: #fff;
         font-family: NoyhRW01-Medium;
         font-size: 51px;
         font-style: normal;
@@ -35,8 +33,8 @@ z-index: 200;
     }
 
     a {
-        color: rgba(255, 255, 255, 0.80);
-        font-family: 'Montserrat', sans-serif;
+        color: rgba(255, 255, 255, 0.8);
+        font-family: "Montserrat", sans-serif;
         font-size: 15px;
         font-style: normal;
         font-weight: 500;
@@ -45,10 +43,8 @@ z-index: 200;
         padding-left: 48px;
     }
 
-     
- 
     .active {
-        color: #FFF;
+        color: #fff;
         font-weight: 600;
     }
 
@@ -60,7 +56,6 @@ z-index: 200;
         position: absolute;
         right: 20px;
         top: 20px;
-        
     }
 
     .btn-menu .lines {
@@ -69,7 +64,7 @@ z-index: 200;
         background-color: #ffff;
         border-radius: 20px;
         margin-bottom: 7px;
-        transition: .3s;
+        transition: 0.3s;
         z-index: 400;
         position: relative;
         top: 0;
@@ -101,8 +96,12 @@ z-index: 200;
         display: none;
     }
 
+    @media (max-width: 750px) {
+        .title {
+            font-size: 36px;
+        }
+    }
 
- 
     @media (max-width: 600px) {
         nav {
             display: none;
@@ -110,12 +109,11 @@ z-index: 200;
 
         .btn-menu {
             display: block;
-            
         }
 
         .background {
             display: flex;
-            background: #F61F4B;
+            background: #f61f4b;
             z-index: 10;
             width: 100vw;
             height: 100vh;
@@ -125,7 +123,7 @@ z-index: 200;
             flex-direction: column;
             text-align: center;
             left: 642px;
-            transition: .5s;
+            transition: 0.5s;
         }
 
         .show-background {
@@ -147,8 +145,5 @@ z-index: 200;
             left: 0;
             right: 0;
         }
-    
-
     }
-
-`
+`;

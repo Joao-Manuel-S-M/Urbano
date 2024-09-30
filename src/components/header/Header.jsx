@@ -1,90 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import * as S from "./Style.js";
-import Hospedagens from "../../pages/hospedagens/Hospedagens.jsx";
+import * as S from "./Style";
 
 const Header = () => {
-  const location = useLocation();
-  const [activePage, setActivePage] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+   const location = useLocation();
 
-  useEffect(() => {
-    const handlePageChange = () => {
-      const path = window.location.pathname;
-      if (path === "/") {
-        setActivePage("home");
-      } else if (path === "/sobre") {
-        setActivePage("sobre");
-      } else if (path === "/hospedagens") {
-        setActivePage("hospedagens");
-      } else if (path === "/contato") {
-        setActivePage("contato");
-      }
-    };
+	const menu = () => {
+		setMenuOpen(!menuOpen);
+	};
 
-    handlePageChange();
-    window.addEventListener("popstate", handlePageChange);
+	const closeMenu = () => {
+		setMenuOpen(false);
+	};
 
-    return () => {
-      window.removeEventListener("popstate", handlePageChange);
-    };
-  }, []);
+	const isActive = (path) => {
+		// Função para determinar se o link está ativo
+		return location.pathname === path ? "active" : "";
+	};
 
-  const isActive = (pathname) => {
-    return location.pathname === pathname ? "active" : "";
-  };
+	return (
+		<S.Header>
+			<span className="title">Urbano</span>
+			<nav>
+				<Link to="/" className={isActive("/")}>
+					Home
+				</Link>
+				<Link to="/sobre" className={isActive("/sobre")}>
+					Sobre
+				</Link>
+				<Link to="/hospedagens" className={isActive("/hospedagens")}>
+					Hospedagens
+				</Link>
+				<Link to="/contato" className={isActive("/contato")}>
+					Contato
+				</Link>
+			</nav>
 
-  const menu = () => {
-    document.getElementById('line1').classList.toggle('line1') 
-    document.getElementById('line2').classList.toggle('line2') 
-    document.getElementById('line3').classList.toggle('line3') 
-    document.querySelector('.btn-menu').classList.toggle('btn-fixed') 
-    document.querySelector('.background').classList.toggle('show-background') 
-  }
+			<div className="btn-menu" onClick={menu}>
+				<div className={`lines ${menuOpen ? "line1" : ""}`} id="line1"></div>
+				<div className={`lines ${menuOpen ? "line2" : ""}`} id="line2"></div>
+				<div className={`lines ${menuOpen ? "line3" : ""}`} id="line3"></div>
+			</div>
 
-  return (
-    <S.Header>
-      <span className="title">Urbano</span>
+			{/* Nav Mobile */}
+			<nav className={`background ${menuOpen ? "show-background" : ""}`}>
+				<span className="title">Urbano</span>
 
-      <nav>
-        <Link to="/" className={isActive("/")}>
-          Home
-        </Link>
-        <Link to="/sobre" className={isActive("/sobre")}>
-          Sobre
-        </Link>
-        <Link to="/hospedagens" className={isActive("/hospedagens")}>
-          Hospedagens
-        </Link>
-        <Link to="/contato" className={isActive("/contato")}>
-          Contato
-        </Link>
-      </nav>
-
-      <div className="btn-menu" onClick={menu}>
-        <div className="lines" id="line1"></div>
-        <div className="lines" id="line2"></div>
-        <div className="lines" id="line3"></div>
-      </div>
-
-      <nav className="background">
-        <span className="title">Urbano</span>
-
-        <Link to="/" className={isActive("/")}>
-          Home
-        </Link>
-        <Link to="/sobre" className={isActive("/sobre")}>
-          Sobre
-        </Link>
-        <Link to="/hospedagens" className={isActive("/hospedagens")}>
-          Hospedagens
-        </Link>
-        <Link to="/contato" className={isActive("/contato")}>
-          Contato
-        </Link>
-      </nav>
-    </S.Header>
-  );
+				<Link to="/" className={isActive("/")} onClick={closeMenu}>
+					Home
+				</Link>
+				<Link to="/sobre" className={isActive("/sobre")} onClick={closeMenu}>
+					Sobre
+				</Link>
+				<Link
+					to="/hospedagens"
+					className={isActive("/hospedagens")}
+					onClick={closeMenu}
+				>
+					Hospedagens
+				</Link>
+				<Link
+					to="/contato"
+					className={isActive("/contato")}
+					onClick={closeMenu}
+				>
+					Contato
+				</Link>
+			</nav>
+		</S.Header>
+	);
 };
 
 export default Header;
