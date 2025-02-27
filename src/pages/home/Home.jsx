@@ -39,7 +39,7 @@ const Home = () => {
             Descubra a excelência da hospedagem no cenário perfeito. Bem-vindo ao melhor que as chalés tem a oferecer, a Urbano, onde o conforto e a hospitalidade se unem para criar momentos memoráveis
           </p>
           <div className='button'>
-            <Link to="/hospedagens" >
+            <Link to="/Urbano/hospedagens" >
               Descubra
             </Link>
             <img src={arrowIcon} />

@@ -23,16 +23,19 @@ const Header = () => {
 		<S.Header>
 			<span className="title">Urbano</span>
 			<nav>
-				<Link to="/" className={isActive("/")}>
+				<Link to="/Urbano" className={isActive("/Urbano")}>
 					Home
 				</Link>
-				<Link to="/sobre" className={isActive("/sobre")}>
+				<Link to="/Urbano/sobre" className={isActive("/Urbano/sobre")}>
 					Sobre
 				</Link>
-				<Link to="/hospedagens" className={isActive("/hospedagens")}>
+				<Link
+					to="/Urbano/hospedagens"
+					className={isActive("/Urbano/hospedagens")}
+				>
 					Hospedagens
 				</Link>
-				<Link to="/contato" className={isActive("/contato")}>
+				<Link to="/Urbano/contato" className={isActive("/Urbano/contato")}>
 					Contato
 				</Link>
 			</nav>
@@ -47,22 +50,26 @@ const Header = () => {
 			<nav className={`background ${menuOpen ? "show-background" : ""}`}>
 				<span className="title">Urbano</span>
 
-				<Link to="/" className={isActive("/")} onClick={closeMenu}>
+				<Link to="/Urbano" className={isActive("/Urbano")} onClick={closeMenu}>
 					Home
 				</Link>
-				<Link to="/sobre" className={isActive("/sobre")} onClick={closeMenu}>
+				<Link
+					to="/Urbano/sobre"
+					className={isActive("/Urbano/sobre")}
+					onClick={closeMenu}
+				>
 					Sobre
 				</Link>
 				<Link
-					to="/hospedagens"
-					className={isActive("/hospedagens")}
+					to="/Urbano/hospedagens"
+					className={isActive("/Urbano/hospedagens")}
 					onClick={closeMenu}
 				>
 					Hospedagens
 				</Link>
 				<Link
-					to="/contato"
-					className={isActive("/contato")}
+					to="/Urbano/contato"
+					className={isActive("/Urbano/contato")}
 					onClick={closeMenu}
 				>
 					Contato
